@@ -1,0 +1,16 @@
+name: Deployment to ECR
+
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  NonprodDeployment:
+    uses: RedVentures/make/.github/workflows/ecr.yml@main
+    with:
+      awsRole: "arn:aws:iam::289509258540:role/make-gha-dev"
+      sessionName: "rv-nifi-test"
+      repoName: "destinations-nifi"
+      accountId: "289509258540"
+      autoPromotion: true
