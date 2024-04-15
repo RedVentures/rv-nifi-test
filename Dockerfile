@@ -5,8 +5,9 @@ ARG IMAGEVERSION=latest
 ARG CHAMBER_VERSION=2.9.1
 
 FROM segment/chamber:${CHAMBER_VERSION} as CHAMBER
-FROM ${ACCOUNTID}.dkr.ecr.${AWSREGION}.amazonaws.com/${ECRREPO}:${IMAGEVERSION}
-FROM RedVentures/rv-nifi-test
+FROM public.ecr.aws/docker/library/amazoncorretto:latest
+#${ACCOUNTID}.dkr.ecr.${AWSREGION}.amazonaws.com/${ECRREPO}:${IMAGEVERSION}
+FROM redventures/rv-nifi-test
 
 ADD keto.yml /config/keto.yml
 
